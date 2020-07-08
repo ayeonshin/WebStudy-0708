@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <style>
+           *{
+                margin: 0;
+               padding: 0;
+           }
+        body{
+            background: #fff;
+            color: #454545;
+        }
+        a{
+            color: #09f;
+        }
+        a:hover{
+            color: #007acc;
+            
+        }
+        button{
+            background: #09f;
+            border: none;
+            display: inline-block;
+            font-size: 1em;
+            font-weight: bold;
+            line-height: 1em;
+            padding: 0.75em 1em;
+            text-decoration: none;
+            border-radius: 0.1874em;
+            color: white;
+        }
+        button:hover {
+            background: #007acc;
+            color: white;
+            
+        }
+        .l-header{
+            background: #212121;
+            height: 80px;
+            position: relative;
+        }
+        .logo{
+            float: left;
+            
+        }
+        .logo-title{
+            margin: 0;
+        }
+        .logo-link{
+            display: inline-block;
+            text-decoration: none;
+            padding: 0 10px;
+            height: 80px;
+            color: #fff;
+            line-height: 80px;
+            word-wrap: no-wrap;/* 단어를 한줄로 붙여라, 줄바꿈 X*/
+        }
+        .menu-btn{
+            position: absolute;
+            right: 10px;
+            top: 20px;
+            display: none;
+        }
+        .menu{
+            float: right;
+        }
+        .menu-list{
+            list-style:none;
+            margin: 0;
+            padding-left: 0;
+            overflow: hidden;
+                
+        }
+        .menu-link{
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            line-height: 5em;
+            height: 5em;
+            padding: 0 1.5em;
+            word-wrap: no-wrap;
+            
+            transition: all 0.3s ease;
+        }
+        .menu-item{
+            text-align: center;
+            float: left;
+        }
+        .menu-item:hover, .menu-link:focus{
+            background: #09f;
+            color: #fff;
+        }
+        @media screen and (max-width:768px){
+            .logo{
+                float: none;
+            }
+            .menu-btn{
+                display: block;
+            }
+            .menu{
+                float: none;
+                opacity: 1;
+            }
+            .menu-item{
+                float: none;
+                display: block;
+                transform: translateX(-100%);
+                transition: all .3s ease-out;
+            }
+            .menu-item--play{
+                display: block;
+                transform: translateX(0%);
+            }
+            /* 메뉴가 나오게 하는 class */
+            .menu-item + .menu-item{
+               border-top: 1px solid #008ae6; 
+            }
+            .menu-link{
+                background: #09f;
+                transition: all .3s ease;
+            }
+            .menu-link:hover{
+                background: #007acc;
+            }
+            .wrap{
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 1000px;
+            }
+            .l-main .wrap{
+                padding: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+  <div id="header" class="l-header">
+     <div class="wrap">
+      <header class="logo">
+          <h1 class="logo-title">
+              <a href="" class="logo-link">Swing Menu</a>
+          </h1>
+      </header>
+      <button class="btn menu-btn">Menu</button>
+      <nav class="menu">
+          <ul class="menu-list">
+              <li class="menu-item "><a href="#" class="menu-link">Menu1</a></li>
+              <li class="menu-item "><a href="#" class="menu-link">Menu2</a></li>
+              <li class="menu-item"><a href="#" class="menu-link">Menu3</a></li>
+              <li class="menu-item"><a href="#" class="menu-link">Menu4</a></li>
+              <li class="menu-item"><a href="#" class="menu-link">Menu5</a></li>
+          </ul>
+      </nav>
+   </div>  
+  </div>
+  
+  
+  <main class="l-main">
+      <div class="wrap">
+          <h1>Responsive Menu</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam distinctio impedit eum omnis cumque voluptatem rerum, maiores ea ducimus repellendus eaque, soluta, quos necessitatibus nemo qui hic? Magni, deserunt, velit.</p>
+      </div>
+  </main>
+  
+  <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+    <script>
+	$('.menu-btn').on('click',function(){
+		var elem=$(this),
+		    item = $('.menu-item'),
+		    active = "is-active",
+		    play = 'menu-item--play';
+
+    if( elem.hasClass('active')){
+		   elem.removeClass('active');
+		   $(item.get().reverse()).each(function(i){
+		   	var row=$(this);
+		   	setTimeout(function(){
+		   		row.removeClass(play);
+		   	}, 50*i);
+		   })
+    } else {
+    	elem.addClass('active');
+    	item.each(function(i){
+    		var row = $(this);
+    		setTimeout( function(){  
+    		  row.addClass(play);
+    		 }, 50*i);
+    	});
+  	}
+});
+</script>
+
+</body>
+</html>

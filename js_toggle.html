@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .container{
+            cursor: pointer;
+            display: inline-block;
+        }
+        .bar1, .bar2, .bar3{
+            width: 35px;
+            height: 5px;
+            background: #333;
+            margin: 6px 0;
+            transition: transform 0.4s;
+        }
+        /* 클릭했을 때 변화된 css */
+        .change .bar1{
+            transform: rotate(-45deg) translate(-9px, 6px);
+           
+        }
+        .change .bar2{
+            opacity: 0;
+        }
+        .change .bar3{
+            transform: rotate(45deg) translate(-8px, -8px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container" onclick="myFunction(this)">
+        <div class="bar1"></div> 
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
+    
+    <!-- 사용자 정의 함수의 기본 형태 -->
+    <script>
+    function myFunction(y){
+       /*
+       1) class container 읽고
+       2) class=change 추가
+       */
+        y.classList.toggle('change');
+        /* 클래스의 목록에 change 추가 / 삭제 */
+        
+        
+    }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
